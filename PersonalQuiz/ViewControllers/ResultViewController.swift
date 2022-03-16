@@ -16,15 +16,14 @@ class ResultViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
-        print(results)
+        setupNavigationItem()
         let resultAnimal = identifyCommonTypeOfAnimal(from: results)
-        print(resultAnimal)
         resultLabel.text = "Вы - \(resultAnimal.rawValue)!"
         definitionLabel.text = resultAnimal.definition
     }
 }
 
+// MARK: - Private Methods
 extension ResultViewController {
     private func identifyCommonTypeOfAnimal(from: [Answer]) -> Animal {
         let animal: Animal
@@ -52,5 +51,9 @@ extension ResultViewController {
             animal = .turtle
         }
         return animal
+    }
+    
+    private func setupNavigationItem() {
+        navigationItem.hidesBackButton = true
     }
 }
