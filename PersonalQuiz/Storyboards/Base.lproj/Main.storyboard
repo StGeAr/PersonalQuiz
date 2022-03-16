@@ -334,8 +334,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="definitionLabel" destination="oey-xn-zq6" id="0F8-TG-9g2"/>
-                        <outlet property="resultLabel" destination="qKU-5H-sDw" id="bct-uD-5nc"/>
+                        <outlet property="definitionLabel" destination="oey-xn-zq6" id="ugt-Xq-OCf"/>
+                        <outlet property="resultLabel" destination="qKU-5H-sDw" id="L6B-nd-ybF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcB-wJ-RCm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

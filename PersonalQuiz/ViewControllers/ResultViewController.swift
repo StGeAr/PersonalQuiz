@@ -9,42 +9,41 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    // 3. Отобразить результаты в соответствии с этим животным
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var definitionLabel: UILabel!
     
-    var results: [Answer]!
+    var results: [Answer] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        
-        let resultAnimal = identifyCommonTypeOfAnimal()
-        
+        print(results)
+        let resultAnimal = identifyCommonTypeOfAnimal(from: results)
+        print(resultAnimal)
         resultLabel.text = "Вы - \(resultAnimal.rawValue)!"
         definitionLabel.text = resultAnimal.definition
     }
 }
 
 extension ResultViewController {
-    private func identifyCommonTypeOfAnimal() -> Animal {
+    private func identifyCommonTypeOfAnimal(from: [Answer]) -> Animal {
         let animal: Animal
         var animalCount:[Int] = []
         
-        let cats = results.filter { $0.animal == Animal.cat }
+        let cats = results.filter { $0.animal == .cat }
         animalCount.append(cats.count)
-        let dogs = results.filter { $0.animal == Animal.dog }
+        let dogs = results.filter { $0.animal == .dog }
         animalCount.append(dogs.count)
-        let rabbit = results.filter { $0.animal == Animal.rabbit }
+        let rabbit = results.filter { $0.animal == .rabbit }
         animalCount.append(rabbit.count)
-        let turtle = results.filter { $0.animal == Animal.turtle }
+        let turtle = results.filter { $0.animal == .turtle }
         animalCount.append(turtle.count)
         
         var commonAnimalCount = animalCount.sorted(by: >)
         
         switch commonAnimalCount.removeFirst() {
         case cats.count:
-            animal = .dog
+            animal = .cat
         case dogs.count:
             animal = .dog
         case rabbit.count:
@@ -52,7 +51,6 @@ extension ResultViewController {
         default:
             animal = .turtle
         }
-        
         return animal
     }
 }
